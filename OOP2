@@ -1,0 +1,73 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RadioButtonDemo
+ {
+    public static void main(String[] args) 
+{
+        JFrame frame = new JFrame("Radio Button");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+
+        JPanel panel = new JPanel();
+
+        JRadioButton birdButton = new JRadioButton("Bird");
+        JRadioButton catButton = new JRadioButton("Cat");
+        JRadioButton dogButton = new JRadioButton("Dog");
+        JRadioButton rabbitButton = new JRadioButton("Rabbit");
+        JRadioButton pigButton = new JRadioButton("Pig");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(birdButton);
+        group.add(catButton);
+        group.add(dogButton);
+        group.add(rabbitButton);
+        group.add(pigButton);
+
+        JLabel resultLabel = new JLabel("Selected pet will be displayed here.");
+
+        panel.add(birdButton);
+        panel.add(catButton);
+        panel.add(dogButton);
+        panel.add(rabbitButton);
+        panel.add(pigButton);
+        panel.add(resultLabel);
+
+        ActionListener listener = new ActionListener() 
+{
+            public void actionPerformed(ActionEvent e) 
+{
+                if (birdButton.isSelected()) 
+{
+                    resultLabel.setText("A bird is displayed.");
+} 
+else if (catButton.isSelected())
+{
+                    resultLabel.setText("A cat is displayed.");
+} 
+else if (dogButton.isSelected())
+{
+                    resultLabel.setText("A dog is displayed.");
+} 
+else if (rabbitButton.isSelected())
+{
+                    resultLabel.setText("A rabbit is displayed.");
+} 
+else if (pigButton.isSelected()) 
+{
+                    resultLabel.setText("A pig is displayed.");
+}
+}
+};
+
+        birdButton.addActionListener(listener);
+        catButton.addActionListener(listener);
+        dogButton.addActionListener(listener);
+        rabbitButton.addActionListener(listener);
+        pigButton.addActionListener(listener);
+
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+}
